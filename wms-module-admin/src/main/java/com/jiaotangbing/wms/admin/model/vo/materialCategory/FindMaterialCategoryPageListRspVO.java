@@ -1,4 +1,4 @@
-package com.jiaotangbing.wms.admin.model.vo.state;
+package com.jiaotangbing.wms.admin.model.vo.materialCategory;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,23 +9,23 @@ import java.time.LocalDateTime;
 
 /**
  * @author lwh
- * @create 2024-12-03 18:11
+ * @create 2024-12-04 17:25
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class FindStatePageListRspVO {
+public class FindMaterialCategoryPageListRspVO {
 
     /**
-     * 状态 ID
+     * 大类 ID
      */
     private Long id;
 
     /**
-     * 状态名称
+     * 大类名称
      */
-    private String stateName;
+    private String categoryName;
 
     /**
      * 创建时间

@@ -8,6 +8,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 /**
  * @author lwh
  * @create 2024-11-25 11:43
@@ -24,7 +26,9 @@ public class MaterialCategoryDO {
 
     private String categoryName;
 
-    private String materialName;
+    private LocalDateTime createTime;
+
+    private LocalDateTime updateTime;
 
     private Boolean isDeleted;
 }
