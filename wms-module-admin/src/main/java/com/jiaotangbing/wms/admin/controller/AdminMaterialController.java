@@ -1,9 +1,6 @@
 package com.jiaotangbing.wms.admin.controller;
 
-import com.jiaotangbing.wms.admin.model.vo.material.AddMaterialReqVO;
-import com.jiaotangbing.wms.admin.model.vo.material.DeleteMaterialReqVO;
-import com.jiaotangbing.wms.admin.model.vo.material.FindMaterialPageListReqVO;
-import com.jiaotangbing.wms.admin.model.vo.material.UpdateMaterialReqVO;
+import com.jiaotangbing.wms.admin.model.vo.material.*;
 import com.jiaotangbing.wms.admin.service.AdminMaterialService;
 import com.jiaotangbing.wms.common.aspect.ApiOperationLog;
 import com.jiaotangbing.wms.common.utils.Response;
@@ -54,6 +51,20 @@ public class AdminMaterialController {
     @ApiOperationLog(description = "根据原材料名查询分页数据")
     public Response findPageListByMaterialName(@RequestBody @Validated FindMaterialPageListReqVO findMaterialPageListReqVO) {
         return materialService.findPageListByMaterialName(findMaterialPageListReqVO);
+    }
+
+    @PostMapping("/list/category")
+    @ApiOperation(value = "根据大类名查询分页数据")
+    @ApiOperationLog(description = "根据大类名查询分页数据")
+    public Response findPageListByCategoryName(@RequestBody @Validated FindMaterialPageListByCategoryNameReqVO findMaterialPageListByCategoryNameReqVO) {
+        return materialService.findPageListByCategoryName(findMaterialPageListByCategoryNameReqVO);
+    }
+
+    @PostMapping("/list/provider")
+    @ApiOperation(value = "根据供应商名查询分页数据")
+    @ApiOperationLog(description = "根据供应商名查询分页数据")
+    public Response findPageListByProvider(@RequestBody @Validated FindMaterialPageListByProviderReqVO findMaterialPageListByProviderReqVO) {
+        return materialService.findPageListByProvider(findMaterialPageListByProviderReqVO);
     }
 
 }

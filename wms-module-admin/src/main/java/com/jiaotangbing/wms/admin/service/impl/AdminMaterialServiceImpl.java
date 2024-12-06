@@ -106,4 +106,52 @@ public class AdminMaterialServiceImpl extends ServiceImpl<MaterialMapper, Materi
 
         return PageResponse.success(materialDOPage, vos);
     }
+
+    @Override
+    public Response findPageListByCategoryName(FindMaterialPageListByCategoryNameReqVO findMaterialPageListByCategoryNameReqVO) {
+        Long current = findMaterialPageListByCategoryNameReqVO.getCurrent();
+        Long size = findMaterialPageListByCategoryNameReqVO.getSize();
+        String categoryName = findMaterialPageListByCategoryNameReqVO.getCategoryName();
+
+        // 执行分页查询
+        Page<MaterialDO> materialDOPage = materialMapper.selectPageListByCategoryName(current, size, categoryName);
+
+        List<MaterialDO> materialDOS = materialDOPage.getRecords();
+        // DO 转 VO
+        List<FindMaterialPageListRspVO> vos = null;
+        if (!CollectionUtils.isEmpty(materialDOS)) {
+            vos = materialDOS.stream()
+                    .map(materialDO -> FindMaterialPageListRspVO.builder()
+                            .id(materialDO.getId())
+                            .categoryName(materialDO.getCategoryName())
+                            .build())
+                    .collect(Collectors.toList());
+        }
+
+        return PageResponse.success(materialDOPage, vos);
+    }
+
+    @Override
+    public Response findPageListByProvider(FindMaterialPageListByProviderReqVO findMaterialPageListByProviderReqVO) {
+        Long current = findMaterialPageListByProviderReqVO.getCurrent();
+        Long size = findMaterialPageListByProviderReqVO.getSize();
+        String provider = findMaterialPageListByProviderReqVO.getProvider();
+
+        // 执行分页查询
+        Page<MaterialDO> materialDOPage = materialMapper.selectPageListByProvider(current, size, provider);
+
+        List<MaterialDO> materialDOS = materialDOPage.getRecords();
+        // DO 转 VO
+        List<FindMaterialPageListRspVO> vos = null;
+        if (!CollectionUtils.isEmpty(materialDOS)) {
+            vos = materialDOS.stream()
+                    .map(materialDO -> FindMaterialPageListRspVO.builder()
+                            .id(materialDO.getId())
+                            .provider(materialDO.getProvider())
+                            .build())
+                    .collect(Collectors.toList());
+        }
+
+        return PageResponse.success(materialDOPage, vos);
+    }
 }

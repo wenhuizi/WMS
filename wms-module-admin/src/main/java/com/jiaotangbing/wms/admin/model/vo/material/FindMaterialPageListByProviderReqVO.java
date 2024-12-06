@@ -9,14 +9,14 @@ import lombok.NoArgsConstructor;
 
 /**
  * @author lwh
- * @create 2024-12-06 11:16
+ * @create 2024-12-06 12:06
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ApiModel(value = "根据大类名查询原材料信息分页数据入参 VO")
-public class FindMaterialPageListReqVO extends BasePageQuery {
+@ApiModel(value = "根据供应商名查询原材料信息分页数据入参 VO")
+public class FindMaterialPageListByProviderReqVO extends BasePageQuery {
 
-    private String materialName;
+    private String provider;
 }

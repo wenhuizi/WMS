@@ -1,9 +1,6 @@
 package com.jiaotangbing.wms.admin.service;
 
-import com.jiaotangbing.wms.admin.model.vo.material.AddMaterialReqVO;
-import com.jiaotangbing.wms.admin.model.vo.material.DeleteMaterialReqVO;
-import com.jiaotangbing.wms.admin.model.vo.material.FindMaterialPageListReqVO;
-import com.jiaotangbing.wms.admin.model.vo.material.UpdateMaterialReqVO;
+import com.jiaotangbing.wms.admin.model.vo.material.*;
 import com.jiaotangbing.wms.admin.model.vo.state.AddStateReqVO;
 import com.jiaotangbing.wms.common.utils.Response;
 
@@ -40,4 +37,18 @@ public interface AdminMaterialService {
      * @return
      */
     Response findPageListByMaterialName(FindMaterialPageListReqVO findMaterialPageListReqVO);
+
+    /**
+     * 根据原大类名分页查询
+     * @param findMaterialPageListByCategoryNameReqVO
+     * @return
+     */
+    Response findPageListByCategoryName(FindMaterialPageListByCategoryNameReqVO findMaterialPageListByCategoryNameReqVO);
+
+    /**
+     * 根据供应商分页查询
+     * @param findMaterialPageListByProviderReqVO
+     * @return
+     */
+    Response findPageListByProvider(FindMaterialPageListByProviderReqVO findMaterialPageListByProviderReqVO);
 }
