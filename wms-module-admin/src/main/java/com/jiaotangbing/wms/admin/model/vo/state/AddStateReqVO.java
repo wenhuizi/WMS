@@ -14,7 +14,7 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ApiModel(value = "添加状态VO")
+@ApiModel(value = "添加状态 VO")
 public class AddStateReqVO {
 
     @NotBlank(message = "状态名称不能为空")
