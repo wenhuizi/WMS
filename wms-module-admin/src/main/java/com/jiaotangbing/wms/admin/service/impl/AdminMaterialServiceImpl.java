@@ -44,8 +44,8 @@ public class AdminMaterialServiceImpl extends ServiceImpl<MaterialMapper, Materi
         }
 
         MaterialDO materialDO = MaterialDO.builder()
-                .materialName(addMaterialReqVO.getMaterialName().trim())
-                .categoryName(addMaterialReqVO.getCategoryName().trim())
+                .materialName(addMaterialReqVO.getMaterialName())
+                .categoryName(addMaterialReqVO.getCategoryName())
                 .specs(addMaterialReqVO.getSpecs())
                 .grammage(addMaterialReqVO.getGrammage())
                 .width(addMaterialReqVO.getWidth())
