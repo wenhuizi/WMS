@@ -36,19 +36,6 @@ public interface AdminMaterialService {
      * @param findMaterialPageListReqVO
      * @return
      */
-    Response findPageListByMaterialName(FindMaterialPageListReqVO findMaterialPageListReqVO);
+    Response findMaterialPageList(FindMaterialPageListReqVO findMaterialPageListReqVO);
 
-    /**
-     * 根据原大类名分页查询
-     * @param findMaterialPageListByCategoryNameReqVO
-     * @return
-     */
-    Response findPageListByCategoryName(FindMaterialPageListByCategoryNameReqVO findMaterialPageListByCategoryNameReqVO);
-
-    /**
-     * 根据供应商分页查询
-     * @param findMaterialPageListByProviderReqVO
-     * @return
-     */
-    Response findPageListByProvider(FindMaterialPageListByProviderReqVO findMaterialPageListByProviderReqVO);
 }

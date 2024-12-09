@@ -15,8 +15,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ApiModel(value = "根据大类名查询原材料信息分页数据入参 VO")
+@ApiModel(value = "查询原材料信息分页数据入参 VO")
 public class FindMaterialPageListReqVO extends BasePageQuery {
 
     private String materialName;
+
+    private String categoryName;
+
+    private String provider;
 }

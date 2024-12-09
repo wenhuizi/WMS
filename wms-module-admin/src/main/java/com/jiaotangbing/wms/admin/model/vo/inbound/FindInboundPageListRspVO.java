@@ -1,8 +1,5 @@
-package com.jiaotangbing.wms.common.domain.dos;
+package com.jiaotangbing.wms.admin.model.vo.inbound;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,16 +10,14 @@ import java.util.Date;
 
 /**
  * @author lwh
- * @create 2024-11-26 22:03
+ * @create 2024-12-09 10:05
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@TableName("t_inbound")
-public class InboundDO {
+public class FindInboundPageListRspVO {
 
-    @TableId(type = IdType.AUTO)
     private Long id;
 
     private String categoryName;
@@ -40,6 +35,4 @@ public class InboundDO {
     private String contractNo;
 
     private String notes;
-
-    private Boolean isDeleted;
 }

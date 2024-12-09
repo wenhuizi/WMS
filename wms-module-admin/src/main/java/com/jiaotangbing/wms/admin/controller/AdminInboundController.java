@@ -2,10 +2,11 @@ package com.jiaotangbing.wms.admin.controller;
 
 import com.jiaotangbing.wms.admin.model.vo.inbound.AddInboundReqVO;
 import com.jiaotangbing.wms.admin.model.vo.inbound.DeleteInboundReqVO;
+import com.jiaotangbing.wms.admin.model.vo.inbound.FindInboundPageListReqVO;
 import com.jiaotangbing.wms.admin.model.vo.inbound.UpdateInboundReqVO;
-import com.jiaotangbing.wms.admin.model.vo.material.DeleteMaterialReqVO;
 import com.jiaotangbing.wms.admin.service.AdminInboundService;
 import com.jiaotangbing.wms.common.aspect.ApiOperationLog;
+import com.jiaotangbing.wms.common.utils.PageResponse;
 import com.jiaotangbing.wms.common.utils.Response;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -47,5 +48,12 @@ public class AdminInboundController {
     @ApiOperationLog(description = "删除入库记录")
     public Response deleteInbound(@RequestBody @Validated DeleteInboundReqVO deleteInboundReqVO){
         return inboundService.deleteInbound(deleteInboundReqVO);
+    }
+
+    @PostMapping("/list")
+    @ApiOperation(value = "入库记录分页数据获取")
+    @ApiOperationLog(description = "入库记录分页数据获取")
+    public PageResponse findInboundList(@RequestBody @Validated FindInboundPageListReqVO findInboundPageListReqVO) {
+        return inboundService.findInboundList(findInboundPageListReqVO);
     }
 }

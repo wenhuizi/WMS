@@ -1,10 +1,13 @@
 package com.jiaotangbing.wms.admin.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jiaotangbing.wms.admin.model.vo.material.*;
 import com.jiaotangbing.wms.admin.service.AdminMaterialService;
+import com.jiaotangbing.wms.common.domain.dos.InboundDO;
 import com.jiaotangbing.wms.common.domain.dos.MaterialCategoryDO;
 import com.jiaotangbing.wms.common.domain.dos.MaterialDO;
 import com.jiaotangbing.wms.common.domain.mapper.MaterialCategoryMapper;
@@ -84,15 +87,29 @@ public class AdminMaterialServiceImpl extends ServiceImpl<MaterialMapper, Materi
     }
 
     @Override
-    public Response findPageListByMaterialName(FindMaterialPageListReqVO findMaterialPageListReqVO) {
+    public Response findMaterialPageList(FindMaterialPageListReqVO findMaterialPageListReqVO) {
+        String materialName = findMaterialPageListReqVO.getMaterialName();
+        String categoryName = findMaterialPageListReqVO.getCategoryName();
+        String provider = findMaterialPageListReqVO.getProvider();
         Long current = findMaterialPageListReqVO.getCurrent();
         Long size = findMaterialPageListReqVO.getSize();
-        String materialName = findMaterialPageListReqVO.getMaterialName();
 
+        // 分页对象(查询第几页、每页多少数据)
+        Page<MaterialDO> page = new Page<>(current, size);
+
+        // 构建查询条件
+        LambdaQueryWrapper<MaterialDO> wrapper = new LambdaQueryWrapper<>();
+
+        wrapper
+                .like(StringUtils.isNotBlank(materialName), MaterialDO::getMaterialName, materialName.trim())
+                .like(StringUtils.isNotBlank(categoryName), MaterialDO::getCategoryName, categoryName.trim())
+                .like(StringUtils.isNotBlank(provider), MaterialDO::getProvider, provider.trim());
         // 执行分页查询
-        Page<MaterialDO> materialDOPage = materialMapper.selectPageListByMaterialName(current, size, materialName);
+        Page<MaterialDO> materialDOPage = materialMapper.selectPage(page, wrapper);
 
         List<MaterialDO> materialDOS = materialDOPage.getRecords();
+
+
         // DO 转 VO
         List<FindMaterialPageListRspVO> vos = null;
         if (!CollectionUtils.isEmpty(materialDOS)) {
@@ -100,53 +117,7 @@ public class AdminMaterialServiceImpl extends ServiceImpl<MaterialMapper, Materi
                     .map(materialDO -> FindMaterialPageListRspVO.builder()
                             .id(materialDO.getId())
                             .materialName(materialDO.getMaterialName())
-                            .build())
-                    .collect(Collectors.toList());
-        }
-
-        return PageResponse.success(materialDOPage, vos);
-    }
-
-    @Override
-    public Response findPageListByCategoryName(FindMaterialPageListByCategoryNameReqVO findMaterialPageListByCategoryNameReqVO) {
-        Long current = findMaterialPageListByCategoryNameReqVO.getCurrent();
-        Long size = findMaterialPageListByCategoryNameReqVO.getSize();
-        String categoryName = findMaterialPageListByCategoryNameReqVO.getCategoryName();
-
-        // 执行分页查询
-        Page<MaterialDO> materialDOPage = materialMapper.selectPageListByCategoryName(current, size, categoryName);
-
-        List<MaterialDO> materialDOS = materialDOPage.getRecords();
-        // DO 转 VO
-        List<FindMaterialPageListRspVO> vos = null;
-        if (!CollectionUtils.isEmpty(materialDOS)) {
-            vos = materialDOS.stream()
-                    .map(materialDO -> FindMaterialPageListRspVO.builder()
-                            .id(materialDO.getId())
                             .categoryName(materialDO.getCategoryName())
-                            .build())
-                    .collect(Collectors.toList());
-        }
-
-        return PageResponse.success(materialDOPage, vos);
-    }
-
-    @Override
-    public Response findPageListByProvider(FindMaterialPageListByProviderReqVO findMaterialPageListByProviderReqVO) {
-        Long current = findMaterialPageListByProviderReqVO.getCurrent();
-        Long size = findMaterialPageListByProviderReqVO.getSize();
-        String provider = findMaterialPageListByProviderReqVO.getProvider();
-
-        // 执行分页查询
-        Page<MaterialDO> materialDOPage = materialMapper.selectPageListByProvider(current, size, provider);
-
-        List<MaterialDO> materialDOS = materialDOPage.getRecords();
-        // DO 转 VO
-        List<FindMaterialPageListRspVO> vos = null;
-        if (!CollectionUtils.isEmpty(materialDOS)) {
-            vos = materialDOS.stream()
-                    .map(materialDO -> FindMaterialPageListRspVO.builder()
-                            .id(materialDO.getId())
                             .provider(materialDO.getProvider())
                             .build())
                     .collect(Collectors.toList());
@@ -154,4 +125,5 @@ public class AdminMaterialServiceImpl extends ServiceImpl<MaterialMapper, Materi
 
         return PageResponse.success(materialDOPage, vos);
     }
+
 }

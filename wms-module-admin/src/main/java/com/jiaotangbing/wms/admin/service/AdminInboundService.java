@@ -2,7 +2,9 @@ package com.jiaotangbing.wms.admin.service;
 
 import com.jiaotangbing.wms.admin.model.vo.inbound.AddInboundReqVO;
 import com.jiaotangbing.wms.admin.model.vo.inbound.DeleteInboundReqVO;
+import com.jiaotangbing.wms.admin.model.vo.inbound.FindInboundPageListReqVO;
 import com.jiaotangbing.wms.admin.model.vo.inbound.UpdateInboundReqVO;
+import com.jiaotangbing.wms.common.utils.PageResponse;
 import com.jiaotangbing.wms.common.utils.Response;
 
 /**
@@ -31,4 +33,11 @@ public interface AdminInboundService {
      * @return
      */
     Response deleteInbound(DeleteInboundReqVO deleteInboundReqVO);
+
+    /**
+     * 入库信息分页查询
+     * @param findInboundPageListReqVO
+     * @return
+     */
+    PageResponse findInboundList(FindInboundPageListReqVO findInboundPageListReqVO);
 }

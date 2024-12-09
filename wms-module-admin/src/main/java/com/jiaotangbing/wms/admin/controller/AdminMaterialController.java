@@ -46,25 +46,11 @@ public class AdminMaterialController {
         return materialService.deleteMaterial(deleteMaterialReqVO);
     }
 
-    @PostMapping("/list/material")
-    @ApiOperation(value = "根据原材料名查询分页数据")
-    @ApiOperationLog(description = "根据原材料名查询分页数据")
-    public Response findPageListByMaterialName(@RequestBody @Validated FindMaterialPageListReqVO findMaterialPageListReqVO) {
-        return materialService.findPageListByMaterialName(findMaterialPageListReqVO);
-    }
-
-    @PostMapping("/list/category")
-    @ApiOperation(value = "根据大类名查询分页数据")
-    @ApiOperationLog(description = "根据大类名查询分页数据")
-    public Response findPageListByCategoryName(@RequestBody @Validated FindMaterialPageListByCategoryNameReqVO findMaterialPageListByCategoryNameReqVO) {
-        return materialService.findPageListByCategoryName(findMaterialPageListByCategoryNameReqVO);
-    }
-
-    @PostMapping("/list/provider")
-    @ApiOperation(value = "根据供应商名查询分页数据")
-    @ApiOperationLog(description = "根据供应商名查询分页数据")
-    public Response findPageListByProvider(@RequestBody @Validated FindMaterialPageListByProviderReqVO findMaterialPageListByProviderReqVO) {
-        return materialService.findPageListByProvider(findMaterialPageListByProviderReqVO);
+    @PostMapping("/list")
+    @ApiOperation(value = "查询入库信息分页数据")
+    @ApiOperationLog(description = "查询入库信息分页数据")
+    public Response findMaterialPageList(@RequestBody @Validated FindMaterialPageListReqVO findMaterialPageListReqVO) {
+        return materialService.findMaterialPageList(findMaterialPageListReqVO);
     }
 
 }
