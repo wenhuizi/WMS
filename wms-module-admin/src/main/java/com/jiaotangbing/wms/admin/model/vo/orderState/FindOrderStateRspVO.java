@@ -1,8 +1,5 @@
-package com.jiaotangbing.wms.common.domain.dos;
+package com.jiaotangbing.wms.admin.model.vo.orderState;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,16 +9,14 @@ import java.time.LocalDateTime;
 
 /**
  * @author lwh
- * @create 2024-11-26 22:34
+ * @create 2024-12-10 23:22
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@TableName("t_order_state")
-public class OrderStateDO {
+public class FindOrderStateRspVO {
 
-    @TableId(type = IdType.AUTO)
     private Long id;
 
     private String OrderNo;
@@ -65,6 +60,4 @@ public class OrderStateDO {
     private String customer;
 
     private String notes;
-
-    private Boolean isDeleted;
 }

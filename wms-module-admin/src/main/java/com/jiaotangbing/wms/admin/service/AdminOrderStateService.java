@@ -2,6 +2,7 @@ package com.jiaotangbing.wms.admin.service;
 
 import com.jiaotangbing.wms.admin.model.vo.orderState.AddOrderStateReqVO;
 import com.jiaotangbing.wms.admin.model.vo.orderState.DeleteOrderStateReqVO;
+import com.jiaotangbing.wms.admin.model.vo.orderState.FindOrderStateReqVO;
 import com.jiaotangbing.wms.admin.model.vo.orderState.UpdateOrderStateReqVO;
 import com.jiaotangbing.wms.common.utils.Response;
 
@@ -31,4 +32,11 @@ public interface AdminOrderStateService {
      * @return
      */
     Response deleteOrderState(DeleteOrderStateReqVO deleteOrderStateReqVO);
+
+    /**
+     * 订单信息分页查询
+     * @param findOrderStateReqVO
+     * @return
+     */
+    Response findOrderStateList(FindOrderStateReqVO findOrderStateReqVO);
 }
