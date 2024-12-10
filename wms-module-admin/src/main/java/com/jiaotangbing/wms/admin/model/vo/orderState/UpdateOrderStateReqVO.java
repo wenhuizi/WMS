@@ -1,8 +1,6 @@
-package com.jiaotangbing.wms.common.domain.dos;
+package com.jiaotangbing.wms.admin.model.vo.orderState;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,17 +10,14 @@ import java.time.LocalDateTime;
 
 /**
  * @author lwh
- * @create 2024-11-26 22:34
+ * @create 2024-12-09 21:13
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@TableName("t_order_state")
-public class OrderStateDO {
-
-    @TableId(type = IdType.AUTO)
-    private Long id;
+@ApiModel(value = "修改订单状态信息 VO")
+public class UpdateOrderStateReqVO {
 
     private String OrderNo;
 
@@ -63,6 +58,4 @@ public class OrderStateDO {
     private Double productProgress;
 
     private String notes;
-
-    private Boolean isDeleted;
 }
