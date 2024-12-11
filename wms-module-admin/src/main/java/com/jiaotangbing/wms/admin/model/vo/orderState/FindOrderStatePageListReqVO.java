@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 @ApiModel(value = "查询订单信息分页数据入参 VO")
-public class FindOrderStateReqVO extends BasePageQuery {
+public class FindOrderStatePageListReqVO extends BasePageQuery {
 
     private String OrderNo;
 

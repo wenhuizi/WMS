@@ -6,10 +6,8 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jiaotangbing.wms.admin.model.vo.orderState.*;
-import com.jiaotangbing.wms.admin.model.vo.outbound.FindOutboundPageListRspVO;
 import com.jiaotangbing.wms.admin.service.AdminOrderStateService;
 import com.jiaotangbing.wms.common.domain.dos.OrderStateDO;
-import com.jiaotangbing.wms.common.domain.dos.OutboundDO;
 import com.jiaotangbing.wms.common.domain.mapper.OrderStateMapper;
 import com.jiaotangbing.wms.common.utils.PageResponse;
 import com.jiaotangbing.wms.common.utils.Response;
@@ -98,17 +96,17 @@ public class AdminOrderStateServiceImpl extends ServiceImpl<OrderStateMapper,Ord
     }
 
     @Override
-    public Response findOrderStateList(FindOrderStateReqVO findOrderStateReqVO) {
-        Long current = findOrderStateReqVO.getCurrent();
-        Long size = findOrderStateReqVO.getSize();
+    public PageResponse findOrderStateList(FindOrderStatePageListReqVO findOrderStatePageListReqVO) {
+        Long current = findOrderStatePageListReqVO.getCurrent();
+        Long size = findOrderStatePageListReqVO.getSize();
 
         Page<OrderStateDO> page = new Page<>(current, size);
         LambdaQueryWrapper<OrderStateDO> wrapper = new LambdaQueryWrapper<>();
 
-        String productName = findOrderStateReqVO.getProductName();
-        String customer = findOrderStateReqVO.getCustomer();
-        LocalDate startDate = findOrderStateReqVO.getStartDate();
-        LocalDate endDate = findOrderStateReqVO.getEndDate();
+        String productName = findOrderStatePageListReqVO.getProductName();
+        String customer = findOrderStatePageListReqVO.getCustomer();
+        LocalDate startDate = findOrderStatePageListReqVO.getStartDate();
+        LocalDate endDate = findOrderStatePageListReqVO.getEndDate();
 
         wrapper
                 .like(StringUtils.isNotBlank(productName), OrderStateDO::getProductName, productName.trim()) // like 模块查询
@@ -121,10 +119,10 @@ public class AdminOrderStateServiceImpl extends ServiceImpl<OrderStateMapper,Ord
 
         List<OrderStateDO> orderStateDOS = orderStateDOPage.getRecords();
 
-        List<FindOrderStateRspVO> vos = null;
+        List<FindOrderStatePageListRspVO> vos = null;
         if (!CollectionUtils.isEmpty(orderStateDOS)) {
             vos = orderStateDOS.stream()
-                    .map(orderStateDO -> FindOrderStateRspVO.builder()
+                    .map(orderStateDO -> FindOrderStatePageListRspVO.builder()
                             .id(orderStateDO.getId())
                             .OrderNo(orderStateDO.getOrderNo())
                             .OrderTime(orderStateDO.getOrderTime())

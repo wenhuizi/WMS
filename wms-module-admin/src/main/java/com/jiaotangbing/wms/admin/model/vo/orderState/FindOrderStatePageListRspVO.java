@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class FindOrderStateRspVO {
+public class FindOrderStatePageListRspVO {
 
     private Long id;
 
