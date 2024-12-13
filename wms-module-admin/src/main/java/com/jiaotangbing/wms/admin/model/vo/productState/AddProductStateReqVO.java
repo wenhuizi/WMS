@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -20,14 +21,18 @@ import java.util.Date;
 @ApiModel(value = "添加产品状态信息 VO")
 public class AddProductStateReqVO {
 
+    @NotBlank(message = "订单编码不能为空")
     private String orderNo;
 
     private String specs;
 
+    @NotBlank(message = "产品编码不能为空")
     private String productNo;
 
+    @NotBlank(message = "产品名称不能为空")
     private String productName;
 
+    @NotBlank(message = "产品最新状态不能为空")
     private String nowState;
 
     private LocalDateTime nowStateTime;
