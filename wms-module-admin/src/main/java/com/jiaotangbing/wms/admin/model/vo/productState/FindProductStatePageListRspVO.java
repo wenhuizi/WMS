@@ -1,28 +1,22 @@
-package com.jiaotangbing.wms.common.domain.dos;
+package com.jiaotangbing.wms.admin.model.vo.productState;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  * @author lwh
- * @create 2024-11-26 22:14
+ * @create 2024-12-10 23:22
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@TableName("t_product_state")
-public class ProductStateDO {
+public class FindProductStatePageListRspVO {
 
-    @TableId(type = IdType.AUTO)
     private Long id;
 
     private String orderNo;
@@ -86,6 +80,4 @@ public class ProductStateDO {
     private String returnProductLocation;
 
     private String notes;
-
-    private Boolean isDeleted;
 }
