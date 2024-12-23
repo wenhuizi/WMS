@@ -1,6 +1,7 @@
 package com.jiaotangbing.wms.admin.service;
 
-import com.jiaotangbing.wms.admin.model.vo.user.UpdateAdminUserPasswordReqVO;
+import com.jiaotangbing.wms.admin.model.vo.user.UpdateAdminUserReqVO;
+import com.jiaotangbing.wms.admin.model.vo.user.UserRegisterReqVO;
 import com.jiaotangbing.wms.common.utils.Response;
 
 /**
@@ -11,14 +12,21 @@ public interface AdminUserService {
 
     /**
      * 修改密码
-     * @param updateAdminUserPasswordReqVO
+     * @param updateAdminUserReqVO
      * @return
      */
-    Response updatePassword(UpdateAdminUserPasswordReqVO updateAdminUserPasswordReqVO);
+    Response updatePassword(UpdateAdminUserReqVO updateAdminUserReqVO);
 
     /**
      * 获取当前登录用户信息
      * @return
      */
     Response findUserInfo();
+
+    /**
+     * 注册新用户
+     * @param userRegisterReqVO
+     * @return
+     */
+    Response userRegister(UserRegisterReqVO userRegisterReqVO);
 }

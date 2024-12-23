@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -42,6 +43,7 @@ public class AdminInboundServiceImpl extends ServiceImpl<InboundMapper, InboundD
                 .attn(addInboundReqVO.getAttn())
                 .contractNo(addInboundReqVO.getContractNo())
                 .notes(addInboundReqVO.getNotes())
+                .inboundTime(LocalDateTime.now())
                 .build();
         inboundMapper.insert(inboundDO);
         return Response.success();
@@ -114,6 +116,7 @@ public class AdminInboundServiceImpl extends ServiceImpl<InboundMapper, InboundD
                             .attn(inboundDO.getAttn())
                             .contractNo(inboundDO.getContractNo())
                             .inboundTime(inboundDO.getInboundTime())
+                            .notes(inboundDO.getNotes())
                             .build())
                     .collect(Collectors.toList());
         }

@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -28,9 +29,11 @@ public class UserDO {
 
     private String password;
 
-    private Date createTime;
+    private Integer telephone;
 
-    private Date updateTime;
+    private LocalDateTime createTime;
+
+    private LocalDateTime updateTime;
 
     private Boolean isDeleted;
 }

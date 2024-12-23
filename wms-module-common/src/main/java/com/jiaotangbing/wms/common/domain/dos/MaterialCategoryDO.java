@@ -26,6 +26,10 @@ public class MaterialCategoryDO {
 
     private String categoryName;
 
+    private String specs;
+
+    private Double storeNum;
+
     private LocalDateTime createTime;
 
     private LocalDateTime updateTime;

@@ -4,10 +4,6 @@ import com.jiaotangbing.wms.admin.model.vo.productReports.AddProductReportsReqVO
 import com.jiaotangbing.wms.admin.model.vo.productReports.DeleteProductReportsReqVO;
 import com.jiaotangbing.wms.admin.model.vo.productReports.FindProductReportsPageListReqVO;
 import com.jiaotangbing.wms.admin.model.vo.productReports.UpdateProductReportsReqVO;
-import com.jiaotangbing.wms.admin.model.vo.productReports.AddProductReportsReqVO;
-import com.jiaotangbing.wms.admin.model.vo.productReports.DeleteProductReportsReqVO;
-import com.jiaotangbing.wms.admin.model.vo.productReports.FindProductReportsPageListReqVO;
-import com.jiaotangbing.wms.admin.model.vo.productReports.UpdateProductReportsReqVO;
 import com.jiaotangbing.wms.admin.service.AdminProductReportsService;
 import com.jiaotangbing.wms.common.aspect.ApiOperationLog;
 import com.jiaotangbing.wms.common.utils.PageResponse;

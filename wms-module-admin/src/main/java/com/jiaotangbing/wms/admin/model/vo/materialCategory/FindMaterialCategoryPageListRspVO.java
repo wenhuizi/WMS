@@ -27,6 +27,10 @@ public class FindMaterialCategoryPageListRspVO {
      */
     private String categoryName;
 
+    private String specs;
+
+    private Double storeNum;
+
     /**
      * 创建时间
      */

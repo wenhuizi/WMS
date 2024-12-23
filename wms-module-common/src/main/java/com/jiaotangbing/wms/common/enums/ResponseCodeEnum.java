@@ -27,6 +27,7 @@ public enum ResponseCodeEnum implements BaseExceptionInterface {
     STATE_NAME_IS_EXISTED("20005","该状态已存在，请勿重复添加"),
     CATEGORY_NAME_IS_EXISTED("20006","该大类已存在，请勿重复添加"),
     CATEGORY_NAME_IS_NOT_EXISTED("20007","该大类不存在，请先添加大类"),
+    USERNAME_IS_EXISTED("20008","该用户名已存在，请重新命名"),
     ;
 
     // 异常码

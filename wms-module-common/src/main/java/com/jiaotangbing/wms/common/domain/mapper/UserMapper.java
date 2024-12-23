@@ -18,11 +18,12 @@ public interface UserMapper extends BaseMapper<UserDO> {
         return selectOne(wrapper);
     }
 
-    default int updatePasswordByUsername(String username, String password) {
+    default int updateByUsername(String username, String password, Integer telephone) {
         LambdaUpdateWrapper<UserDO> wrapper = new LambdaUpdateWrapper<>();
         // 设置要更新的字段
         wrapper.set(UserDO::getPassword, password);
         wrapper.set(UserDO::getUpdateTime, LocalDateTime.now());
+        wrapper.set(UserDO::getTelephone, telephone);
         // 更新条件
         wrapper.eq(UserDO::getUsername, username);
 

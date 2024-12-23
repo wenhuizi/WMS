@@ -1,8 +1,10 @@
 package com.jiaotangbing.wms.admin.service;
 
+import com.jiaotangbing.wms.admin.model.vo.inbound.UpdateInboundReqVO;
 import com.jiaotangbing.wms.admin.model.vo.materialCategory.AddMaterialCategoryReqVO;
 import com.jiaotangbing.wms.admin.model.vo.materialCategory.DeleteMaterialCategoryReqVO;
 import com.jiaotangbing.wms.admin.model.vo.materialCategory.FindMaterialCategoryPageListReqVO;
+import com.jiaotangbing.wms.admin.model.vo.materialCategory.UpdateMaterialCategoryReqVO;
 import com.jiaotangbing.wms.admin.model.vo.state.AddStateReqVO;
 import com.jiaotangbing.wms.admin.model.vo.state.FindStatePageListReqVO;
 import com.jiaotangbing.wms.common.utils.PageResponse;
@@ -34,4 +36,11 @@ public interface AdminMaterialCategoryService {
      * @return
      */
     Response deleteMaterialCategory(DeleteMaterialCategoryReqVO deleteMaterialCategoryReqVO);
+
+    /**
+     * 更新大类
+     * @param updateMaterialCategoryReqVO
+     * @return
+     */
+    Response updateMaterialCategory(UpdateMaterialCategoryReqVO updateMaterialCategoryReqVO);
 }

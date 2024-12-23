@@ -3,10 +3,9 @@ package com.jiaotangbing.wms.admin.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.jiaotangbing.wms.admin.model.vo.materialCategory.AddMaterialCategoryReqVO;
-import com.jiaotangbing.wms.admin.model.vo.materialCategory.DeleteMaterialCategoryReqVO;
-import com.jiaotangbing.wms.admin.model.vo.materialCategory.FindMaterialCategoryPageListReqVO;
-import com.jiaotangbing.wms.admin.model.vo.materialCategory.FindMaterialCategoryPageListRspVO;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jiaotangbing.wms.admin.model.vo.inbound.UpdateInboundReqVO;
+import com.jiaotangbing.wms.admin.model.vo.materialCategory.*;
 import com.jiaotangbing.wms.admin.service.AdminMaterialCategoryService;
 import com.jiaotangbing.wms.common.domain.dos.MaterialCategoryDO;
 import com.jiaotangbing.wms.common.domain.mapper.MaterialCategoryMapper;
@@ -30,7 +29,7 @@ import java.util.stream.Collectors;
  */
 @Service
 @Slf4j
-public class AdminMaterialCategoryServiceImpl implements AdminMaterialCategoryService {
+public class AdminMaterialCategoryServiceImpl extends ServiceImpl<MaterialCategoryMapper, MaterialCategoryDO> implements AdminMaterialCategoryService {
 
     @Autowired
     private MaterialCategoryMapper materialCategoryMapper;
@@ -48,6 +47,8 @@ public class AdminMaterialCategoryServiceImpl implements AdminMaterialCategorySe
         // 构建 DO 类
         MaterialCategoryDO insertCategoryDO = MaterialCategoryDO.builder()
                 .categoryName(addMaterialCategoryReqVO.getCategoryName().trim())
+                .specs(addMaterialCategoryReqVO.getSpecs())
+                .storeNum(addMaterialCategoryReqVO.getStoreNum())
                 .build();
 
         // 执行 insert
@@ -86,6 +87,8 @@ public class AdminMaterialCategoryServiceImpl implements AdminMaterialCategorySe
                     .map(materialCategoryDO -> FindMaterialCategoryPageListRspVO.builder()
                             .id(materialCategoryDO.getId())
                             .categoryName(materialCategoryDO.getCategoryName())
+                            .specs(materialCategoryDO.getSpecs())
+                            .storeNum(materialCategoryDO.getStoreNum())
                             .createTime(materialCategoryDO.getCreateTime())
                             .build())
                     .collect(Collectors.toList());
@@ -98,6 +101,18 @@ public class AdminMaterialCategoryServiceImpl implements AdminMaterialCategorySe
     public Response deleteMaterialCategory(DeleteMaterialCategoryReqVO deleteMaterialCategoryReqVO) {
         Long id = deleteMaterialCategoryReqVO.getId();
         materialCategoryMapper.deleteById(id);
+        return Response.success();
+    }
+
+    @Override
+    public Response updateMaterialCategory(UpdateMaterialCategoryReqVO updateMaterialCategoryReqVO) {
+        MaterialCategoryDO materialCategoryDO = MaterialCategoryDO.builder()
+                .id(1L)
+                .categoryName(updateMaterialCategoryReqVO.getCategoryName())
+                .specs(updateMaterialCategoryReqVO.getSpecs())
+                .storeNum(updateMaterialCategoryReqVO.getStoreNum())
+                .build();
+        saveOrUpdate(materialCategoryDO);
         return Response.success();
     }
 }

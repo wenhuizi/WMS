@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -16,10 +17,14 @@ import java.util.Date;
 @Builder
 @TableName("t_user_role")
 public class UserRoleDO {
+
     @TableId(type = IdType.AUTO)
     private Long id;
+
     private String username;
+
     private String role;
-    private Date createTime;
+
+    private LocalDateTime createTime;
 }
 

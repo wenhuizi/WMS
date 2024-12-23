@@ -1,6 +1,6 @@
 package com.jiaotangbing.wms.admin.controller;
 
-import com.jiaotangbing.wms.admin.model.vo.user.UpdateAdminUserPasswordReqVO;
+import com.jiaotangbing.wms.admin.model.vo.user.UpdateAdminUserReqVO;
 import com.jiaotangbing.wms.admin.service.AdminUserService;
 import com.jiaotangbing.wms.common.aspect.ApiOperationLog;
 import com.jiaotangbing.wms.common.utils.Response;
@@ -28,8 +28,8 @@ public class AdminUserController {
     @PostMapping("/password/update")
     @ApiOperation(value = "修改用户密码")
     @ApiOperationLog(description = "修改用户密码")
-    public Response updatePassword(@RequestBody @Validated UpdateAdminUserPasswordReqVO updateAdminUserPasswordReqVO) {
-        return userService.updatePassword(updateAdminUserPasswordReqVO);
+    public Response updatePassword(@RequestBody @Validated UpdateAdminUserReqVO updateAdminUserReqVO) {
+        return userService.updatePassword(updateAdminUserReqVO);
     }
 
     @PostMapping("/user/info")

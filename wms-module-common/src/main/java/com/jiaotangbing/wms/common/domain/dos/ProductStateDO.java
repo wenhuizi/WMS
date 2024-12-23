@@ -8,8 +8,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  * @author lwh
@@ -35,53 +35,53 @@ public class ProductStateDO {
 
     private String nowState;
 
-    private LocalDateTime nowStateTime;
+    private Date nowStateTime;
 
     private String nowNextState;
 
-    private LocalDateTime preStateTime;
+    private Date preStateTime;
 
     private String preStateNext;
 
-    private LocalDateTime solidStateFinishTime;
+    private Date solidStateFinishTime;
 
     private String solidStateNext;
 
-    private LocalDateTime depositStateOutTime;
+    private Date depositStateOutTime;
 
     private String depositStateNext;
 
-    private LocalDateTime depositAgainOutTime;
+    private Date depositAgainOutTime;
 
-    private LocalDateTime entrustedProcessDeliveryTime;
+    private Date entrustedProcessDeliveryTime;
 
     private String entrustedProcessStateNext;
 
-    private LocalDateTime returnCompanyTime;
+    private Date returnCompanyTime;
 
     private String returnCompanyNext;
 
-    private LocalDateTime heatStateFinishTime;
+    private Date heatStateFinishTime;
 
     private String heatStateNext;
 
-    private LocalDateTime machiningStateFinishTime;
+    private Date machiningStateFinishTime;
 
     private String machiningStateNextState;
 
-    private LocalDateTime coatingStateFinishTime;
+    private Date coatingStateFinishTime;
 
     private String coatingStateNextState;
 
-    private LocalDateTime finishedProductInboundTime;
+    private Date finishedProductInboundTime;
 
     private String finishedProductNextState;
 
-    private LocalDateTime saleDeliveryTime;
+    private Date saleDeliveryTime;
 
     private String saleCustomer;
 
-    private LocalDateTime returnProductTime;
+    private Date returnProductTime;
 
     private String returnProductLocation;
 

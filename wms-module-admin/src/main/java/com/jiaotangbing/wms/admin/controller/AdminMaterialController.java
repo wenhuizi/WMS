@@ -47,7 +47,7 @@ public class AdminMaterialController {
     }
 
     @PostMapping("/list")
-    @ApiOperation(value = "查询入库信息分页数据")
+    @ApiOperation(value = "查询原材料信息分页数据")
     @ApiOperationLog(description = "查询入库信息分页数据")
     public Response findMaterialPageList(@RequestBody @Validated FindMaterialPageListReqVO findMaterialPageListReqVO) {
         return materialService.findMaterialPageList(findMaterialPageListReqVO);
