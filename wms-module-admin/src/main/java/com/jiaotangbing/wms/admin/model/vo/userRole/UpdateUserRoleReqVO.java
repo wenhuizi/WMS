@@ -1,4 +1,4 @@
-package com.jiaotangbing.wms.admin.model.vo.user;
+package com.jiaotangbing.wms.admin.model.vo.userRole;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -8,7 +8,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 
 /**
@@ -19,19 +18,15 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ApiModel(value = "修改用户信息 VO")
-public class UpdateAdminUserReqVO {
+@ApiModel(value = "修改用户角色信息 VO")
+public class UpdateUserRoleReqVO {
 
     @NotBlank(message = "用户名不能为空")
     @ApiModelProperty(value = "用户名")
     private String username;
 
-    @NotBlank(message = "密码不能为空")
-    @ApiModelProperty(value = "密码")
-    private String password;
-
-    @NotNull(message = "联系电话不能为空")
-    @ApiModelProperty(value = "联系电话")
-    private Integer telephone;
+    @NotBlank(message = "角色不能为空")
+    @ApiModelProperty(value = "角色")
+    private String role;
 }
 

@@ -23,11 +23,13 @@ public enum ResponseCodeEnum implements BaseExceptionInterface {
     USERNAME_OR_PWD_ERROR("20001", "用户名或密码错误"),
     UNAUTHORIZED("20002", "无访问权限，请先登录！"),
     USERNAME_NOT_FOUND("20003", "该用户不存在"),
-    FORBIDDEN("20004", "普通用户账号仅支持查询操作！"),
+    FORBIDDEN("20004", "权限不够，请联系管理员！"),
     STATE_NAME_IS_EXISTED("20005","该状态已存在，请勿重复添加"),
     CATEGORY_NAME_IS_EXISTED("20006","该大类已存在，请勿重复添加"),
     CATEGORY_NAME_IS_NOT_EXISTED("20007","该大类不存在，请先添加大类"),
     USERNAME_IS_EXISTED("20008","该用户名已存在，请重新命名"),
+    PASSWORD_NOT_EQUALS("20009","两次输入的密码不一致"),
+    USERNAME_IS_NOT_EXISTED("20010","该用户不存在,请先注册用户"),
     ;
 
     // 异常码

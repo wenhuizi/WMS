@@ -10,16 +10,17 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+
 /**
  * @author lwh
- * @create 2024-12-23 17:08
+ * @create 2024-12-03 17:13
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ApiModel(value = "注册用户 VO")
-public class UserRegisterReqVO {
+@ApiModel(value = "修改用户信息 VO")
+public class UpdateUserReqVO {
 
     @NotBlank(message = "用户名不能为空")
     @ApiModelProperty(value = "用户名")
@@ -29,11 +30,8 @@ public class UserRegisterReqVO {
     @ApiModelProperty(value = "密码")
     private String password;
 
-    @NotBlank(message = "验证密码不能为空")
-    @ApiModelProperty(value = "验证密码")
-    private String checkPassword;
-
     @NotNull(message = "联系电话不能为空")
     @ApiModelProperty(value = "联系电话")
     private Integer telephone;
 }
+
